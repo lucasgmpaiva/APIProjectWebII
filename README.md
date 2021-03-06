@@ -31,3 +31,6 @@ John possui uma grande coleção de filmes e séries. Ele fará uso desta API pa
 8. John deseja verificar uma série específica conhecendo o código dela no sistema.
 9. John deseja ver todas as séries da BBC que possui em seu catálogo.
 10. John perdeu uma das séries de sua coleção e deseja apagá-la do sistema.
+
+# Exemplo de sistema que faz uso da API:
+https://github.com/lucasgmpaiva/ProjetoWebII
