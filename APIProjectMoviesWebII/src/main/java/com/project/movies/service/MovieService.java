@@ -41,36 +41,36 @@ public class MovieService {
 		
 		List<Movie> movies = findAll();
 		List<Movie> foundMovies = new ArrayList<Movie>();
-		if(title != null || director != null) {
+		if(title != null || director != null || gender != null) {
 			for (Movie movie : movies) {
 				if(title != null && director == null && gender == null) {
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director != null && title == null && gender == null) {
+				if(director != null && title == null && gender == null) {
 					if(movie.getDirector().toLowerCase().contains(director.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director != null && title != null && gender == null) {
+				if(director != null && title != null && gender == null) {
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
 							&& movie.getDirector().toLowerCase().contains(director.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director == null && title != null && gender != null) {
+				if(director == null && title != null && gender != null) {
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
 							&& movie.getGender().toLowerCase().contains(gender.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director != null && title == null && gender != null) {
+				if(director != null && title == null && gender != null) {
 					if(movie.getDirector().toLowerCase().contains(director.toLowerCase())
 							&& movie.getGender().toLowerCase().contains(gender.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director == null && title == null && gender != null) {
+				if(gender != null && director == null && title == null) {
 					if(movie.getGender().toLowerCase().contains(gender.toLowerCase()))
 						foundMovies.add(movie);
 				}
-				else if(director != null && title != null && gender != null) {
+				if(director != null && title != null && gender != null) {
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
 							&& movie.getGender().toLowerCase().contains(gender.toLowerCase())
 							&& movie.getDirector().toLowerCase().contains(director.toLowerCase()))
