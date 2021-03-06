@@ -15,7 +15,7 @@ Uma API que implementa um repositório de Filmes e Séries desenvolvida em Sprin
 7. (GET) /serie/all - Retorna todos as series cadastradas
 8. (GET) /serie/{id} - Retorna serie com base no id
 9. (GET) /serie/search{query} - Retorna serie com base nos filtros da busca (título, gênero, emissora)
-10.(DELETE) /serie/delete/{id} - Deleta série
+10. (DELETE) /serie/delete/{id} - Deleta série
 
 # Histórias de Usuário Para os Endpoints
 
@@ -30,4 +30,4 @@ John possui uma grande coleção de filmes e séries. Ele fará uso desta API pa
 7. John deseja verificar todas as séries que possui em seu catálogo.
 8. John deseja verificar uma série específica conhecendo o código dela no sistema.
 9. John deseja ver todas as séries da BBC que possui em seu catálogo.
-10.John perdeu uma das séries de sua coleção e deseja apagá-la do sistema.
+10. John perdeu uma das séries de sua coleção e deseja apagá-la do sistema.
