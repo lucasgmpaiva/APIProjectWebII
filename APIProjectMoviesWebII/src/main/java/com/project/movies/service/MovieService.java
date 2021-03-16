@@ -37,6 +37,12 @@ public class MovieService {
 		return mapper.optionalToModel(movieRepository.findById(id));
 	}
 	
+	public String deleteMovieById(Long id) {
+		MovieEntity movieEntity = mapper.toEntity(findById(id));
+		movieRepository.delete(movieEntity);
+		return "Succeed!";
+	}
+	
 	public List<Movie> searchMovies (String title, String director, String gender) {
 		
 		List<Movie> movies = findAll();
