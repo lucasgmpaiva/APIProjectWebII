@@ -6,12 +6,12 @@ Uma API que implementa um repositório de Filmes e Séries desenvolvida em Sprin
 
 # Endpoints
 
-1. (POST) /movie - Cadastra um filme - Desenvolvido
-2. (GET) /movie/all - Retorna todos os filmes cadastrados - Desenvolvido
-3. (GET) /movie/{id} - Retorna filme com base no id - Desenvolvido - Desenvolvido
-4. (GET) /movie/search{query} - Retorna filme com base nos filtros da busca (título, gênero e diretor) - Desenvolvido
-5. (PUT) /movie/{id} - Edita as informações do filme - Desenvolvido
-6. (DELETE) /movie/{id} - Deleta filme
+1. (POST) /movie - Cadastra um filme - [DESENVOLVIDO]
+2. (GET) /movie/all - Retorna todos os filmes cadastrados - [DESENVOLVIDO]
+3. (GET) /movie/{id} - Retorna filme com base no id - Desenvolvido - [DESENVOLVIDO]
+4. (GET) /movie/search{query} - Retorna filme com base nos filtros da busca (título, gênero e diretor) - [DESENVOLVIDO]
+5. (PUT) /movie/{id} - Edita as informações do filme - [DESENVOLVIDO]
+6. (DELETE) /movie/{id} - Deleta filme - [DESENVOLVIDO]
 7. (POST) /serie - Cadastra uma serie 
 8. (GET) /serie/all - Retorna todos as series cadastradas
 9. (GET) /serie/{id} - Retorna serie com base no id
