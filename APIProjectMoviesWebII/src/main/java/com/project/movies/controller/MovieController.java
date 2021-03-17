@@ -53,7 +53,8 @@ public class MovieController {
 	@PutMapping("/{id}")
 	public Movie editMovie(@PathVariable("id") Long id,
 							@RequestBody Movie movie) {
-		return null;		
+		movie.setId(id);
+		return service.editMovie(movie);		
 	}
 	
 	

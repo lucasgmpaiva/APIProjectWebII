@@ -43,6 +43,11 @@ public class MovieService {
 		return "Succeed!";
 	}
 	
+	public Movie editMovie(Movie movie) {
+		MovieEntity movieEntity = mapper.toEntity(movie);
+		return mapper.toModel(movieRepository.save(movieEntity));
+	}
+	
 	public List<Movie> searchMovies (String title, String director, String gender) {
 		
 		List<Movie> movies = findAll();
