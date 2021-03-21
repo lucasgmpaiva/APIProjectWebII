@@ -10,18 +10,21 @@ on:
     branches: [ main ]
 
 jobs:
+  build:# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
   build:
-    name: Testing
+
     runs-on: ubuntu-latest
-    services:
-      mysql-test:
-        image: mysql:8.0.23
-        env: 
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
-        volumes:
-          - $(pwd)/APIProjectMoviesWebII/Scripts
 
     steps:
     - uses: actions/checkout@v2
@@ -30,6 +33,4 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: 
-        docker exec mysql-test /bin/bash -c 'mysql -uroot -proot < Scripts/createDB.sql'
-        mvn package --file APIProjectMoviesWebII/pom.xml
+      run: mvn package --file APIProjectMoviesWebII/pom.xml
