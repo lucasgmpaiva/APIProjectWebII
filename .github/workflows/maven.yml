@@ -11,8 +11,17 @@ on:
 
 jobs:
   build:
-
+    name: Testing
     runs-on: ubuntu-latest
+    services:
+      mysql-test:
+        image: mysql:8.0.23
+        env: 
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        volumes:
+          - $(pwd)/APIProjectMoviesWebII/Scripts:/scripts
 
     steps:
     - uses: actions/checkout@v2
@@ -21,4 +30,6 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn package --file APIProjectMoviesWebII/pom.xml
+      run: 
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -proot < scripts/createDB.sql'
+        mvn package --file APIProjectMoviesWebII/pom.xml
