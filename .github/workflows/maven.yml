@@ -21,7 +21,7 @@ jobs:
         ports:
           - 3306:3306
         volumes:
-          - $(pwd)/APIProjectMoviesWebII/Scripts:/scripts
+          - $(pwd)/APIProjectMoviesWebII/Scripts
 
     steps:
     - uses: actions/checkout@v2
@@ -31,5 +31,5 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: 
-        docker exec mysql-teste /bin/bash -c 'mysql -uroot -proot < scripts/createDB.sql'
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -proot < Scripts/createDB.sql'
         mvn package --file APIProjectMoviesWebII/pom.xml
