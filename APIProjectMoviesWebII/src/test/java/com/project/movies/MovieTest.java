@@ -22,13 +22,26 @@ public class MovieTest {
 	private TestRestTemplate testRestTemplate;
 	
 	@Test
-	public void testGetMovie() {
+	public void testGetMovieById() {
 		
 		ResponseEntity<MovieEntity> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/1", MovieEntity.class);
 		
 		MovieEntity movie = res.getBody();
 		
 		assertEquals(1L, movie.getId());
+		
+	}
+	
+	@Test
+	public void testGetMovieByDirector() {
+		
+		ResponseEntity<MovieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/search?director=Tarantino", MovieEntity[].class);
+		
+		MovieEntity[] movies = res.getBody();
+		
+		for(MovieEntity movie : movies) {
+			assertEquals("Quentin Tarantino", movie.getDirector());
+		}
 		
 	}
 
