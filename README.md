@@ -4,7 +4,7 @@
 
 Uma API que implementa um repositório de Filmes e Séries desenvolvida em Spring Boot. Nela será possível cadastrar filme/série, pesquisar, editar e deletar.
 
-# Endpoints
+# Endpoints (Todos Desenvolvidos)
 
 1. (POST) /movie - Cadastra um filme
 2. (GET) /movie/all - Retorna todos os filmes cadastrados
