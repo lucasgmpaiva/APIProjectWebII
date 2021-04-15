@@ -59,6 +59,8 @@ public class MovieService {
 	
 	public List<Movie> searchMovies (String title, String director, String gender) {
 		
+		logger.info("Inicializando verificação de filtros...");
+		
 		List<Movie> movies = findAll();
 		List<Movie> foundMovies = new ArrayList<Movie>();
 		if(title != null || director != null || gender != null) {
