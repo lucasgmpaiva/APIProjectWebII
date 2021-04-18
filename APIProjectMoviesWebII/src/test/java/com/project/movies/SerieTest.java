@@ -18,7 +18,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import com.project.movies.entity.MovieEntity;
 import com.project.movies.entity.SerieEntity;
 import com.project.movies.repository.SerieRepository;
 
@@ -83,6 +82,21 @@ public class SerieTest {
 		assertTrue(serie.isEmpty());
 	}
 	
+	@Test void testUpdateSerie() throws JSONException {
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<String> request = new HttpEntity<String>(getJSONSerieUpdate().toString(), headers);
+		
+		testRestTemplate.put("http://localhost:" + port + "/serie/3", request, SerieEntity.class);
+		
+		Optional<SerieEntity> serie = serieRepository.findById(3L);
+		
+		assertEquals("Game of Thrones", serie.get().getTitle());
+		
+	}
+	
 	
 	// Utilitários
 	
@@ -93,6 +107,17 @@ public class SerieTest {
 		json.put("broadcaster", "NBC");
 		json.put("release_date", "22-09-1994");
 		json.put("gender", "Comedy");
+		
+		return json;
+	}
+	
+	private JSONObject getJSONSerieUpdate() throws JSONException {
+		JSONObject json = new JSONObject();
+		
+		json.put("title", "Game of Thrones");
+		json.put("broadcaster", "HBO");
+		json.put("release_date", "2011");
+		json.put("gender", "Epic");
 		
 		return json;
 	}
