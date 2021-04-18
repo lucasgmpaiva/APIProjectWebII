@@ -13,8 +13,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
-import com.project.movies.entity.MovieEntity;
 import com.project.movies.entity.SerieEntity;
 import com.project.movies.repository.SerieRepository;
 
@@ -47,6 +47,18 @@ public class SerieTest {
 		SerieEntity serie = testRestTemplate.getForObject("http://localhost:" + port + "/serie/1", SerieEntity.class);
 		
 		assertEquals(1L, serie.getId());
+		
+	}
+	
+	@Test void testGetSerieByTitle() {
+		
+		ResponseEntity<SerieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/serie/search?title=Avenida Brasil", SerieEntity[].class);
+		
+		SerieEntity[] series = res.getBody();
+		
+		for(SerieEntity serie : series) {
+			assertEquals("Avenida Brasil", serie.getTitle());
+		}
 		
 	}
 	
