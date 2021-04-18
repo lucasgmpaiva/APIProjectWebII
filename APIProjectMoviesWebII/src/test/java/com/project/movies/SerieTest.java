@@ -71,7 +71,7 @@ public class SerieTest {
 		
 		SerieEntity[] series = res.getBody();
 		
-		assertEquals(4, series.length);
+		assertEquals(3, series.length);
 	}
 	
 	@Test void testDeleteSerie() {
