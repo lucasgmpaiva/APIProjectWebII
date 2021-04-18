@@ -33,8 +33,7 @@ public class MovieTest {
 	@Autowired
 	private MovieRepository movieRepository;
 	
-	@Test
-	public void testPostMovie() throws JSONException {
+	@Test void testPostMovie() throws JSONException {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -46,8 +45,7 @@ public class MovieTest {
 		
 	}
 	
-	@Test
-	public void testGetMovieById() {
+	@Test void testGetMovieById() {
 		
 		MovieEntity movie = testRestTemplate.getForObject("http://localhost:" + port + "/movie/1", MovieEntity.class);
 		
@@ -55,8 +53,7 @@ public class MovieTest {
 		
 	}
 	
-	@Test
-	public void testGetMovieByDirector() {
+	@Test void testGetMovieByDirector() {
 		
 		ResponseEntity<MovieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/search?director=Me", MovieEntity[].class);
 		
@@ -76,6 +73,8 @@ public class MovieTest {
 		assertEquals(2, movies.length);
 	}
 	
+	
+	
 	@Test void testDeleteMovie() {
 		
 		testRestTemplate.delete("http://localhost:" + port + "/movie/2");
@@ -83,6 +82,19 @@ public class MovieTest {
 		Optional<MovieEntity> movie = movieRepository.findById(2L);
 		
 		assertTrue(movie.isEmpty());
+	}
+	
+	@Test void testUpdateMovie() throws JSONException {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<String> request = new HttpEntity<String>(getJSONMovieUpdate().toString(), headers);
+		
+		testRestTemplate.put("http://localhost:" + port + "/movie/3", request, MovieEntity.class);
+		
+		Optional<MovieEntity> movie = movieRepository.findById(3L);
+		
+		assertEquals("Jurassic Park", movie.get().getTitle());
 	}
 	
 	
@@ -99,5 +111,18 @@ public class MovieTest {
 		
 		return json;
 	}
+	
+	private JSONObject getJSONMovieUpdate() throws JSONException {
+		JSONObject json = new JSONObject();
+		
+		json.put("title", "Jurassic Park");
+		json.put("writer", "Michael Crichton");
+		json.put("director", "Steven Spielberg");
+		json.put("release_date", "13-06-1993");
+		json.put("gender", "Sci-Fi");
+		
+		return json;
+	}
+
 
 }
