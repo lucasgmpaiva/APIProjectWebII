@@ -1,6 +1,9 @@
 package com.project.movies;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import com.project.movies.entity.MovieEntity;
 import com.project.movies.entity.SerieEntity;
 import com.project.movies.repository.SerieRepository;
 
@@ -67,7 +71,16 @@ public class SerieTest {
 		
 		SerieEntity[] series = res.getBody();
 		
-		assertEquals(3, series.length);
+		assertEquals(4, series.length);
+	}
+	
+	@Test void testDeleteSerie() {
+		
+		testRestTemplate.delete("http://localhost:" + port + "/serie/3");
+		
+		Optional<SerieEntity> serie = serieRepository.findById(3L);
+		
+		assertTrue(serie.isEmpty());
 	}
 	
 	
