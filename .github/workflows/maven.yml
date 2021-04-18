@@ -20,7 +20,7 @@ jobs:
         image: mysql:8.0.23
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DB: moviesdb
+          MYSQL_DB: moviesDB
         ports:
           - 3306:3306
         options: --name db --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
