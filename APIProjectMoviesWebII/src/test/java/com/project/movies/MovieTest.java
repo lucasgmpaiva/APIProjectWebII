@@ -1,6 +1,9 @@
 package com.project.movies;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import com.project.movies.entity.MovieEntity;
+import com.project.movies.repository.MovieRepository;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class MovieTest {
@@ -25,6 +29,9 @@ public class MovieTest {
 	
 	@Autowired
 	private TestRestTemplate testRestTemplate;
+	
+	@Autowired
+	private MovieRepository movieRepository;
 	
 	@Test
 	public void testPostMovie() throws JSONException {
@@ -42,9 +49,7 @@ public class MovieTest {
 	@Test
 	public void testGetMovieById() {
 		
-		ResponseEntity<MovieEntity> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/1", MovieEntity.class);
-		
-		MovieEntity movie = res.getBody();
+		MovieEntity movie = testRestTemplate.getForObject("http://localhost:" + port + "/movie/1", MovieEntity.class);
 		
 		assertEquals(1L, movie.getId());
 		
@@ -61,6 +66,23 @@ public class MovieTest {
 			assertEquals("Quentin Tarantino", movie.getDirector());
 		}
 		
+	}
+	
+	@Test void testGetAll() {
+		ResponseEntity<MovieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/all", MovieEntity[].class);
+		
+		MovieEntity[] movies = res.getBody();
+		
+		assertEquals(2, movies.length);
+	}
+	
+	@Test void testDeleteMovie() {
+		
+		testRestTemplate.delete("http://localhost:" + port + "/movie/2");
+		
+		Optional<MovieEntity> movie = movieRepository.findById(2L);
+		
+		assertTrue(movie.isEmpty());
 	}
 	
 	
