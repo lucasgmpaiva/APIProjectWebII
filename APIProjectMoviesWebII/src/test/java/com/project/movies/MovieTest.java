@@ -70,7 +70,7 @@ public class MovieTest {
 		
 		MovieEntity[] movies = res.getBody();
 		
-		assertEquals(2, movies.length);
+		assertEquals(3, movies.length);
 	}
 	
 	
