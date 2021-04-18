@@ -55,12 +55,12 @@ public class SerieTest {
 	
 	@Test void testGetSerieByTitle() {
 		
-		ResponseEntity<SerieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/serie/search?title=Avenida Brasil", SerieEntity[].class);
+		ResponseEntity<SerieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/serie/search?title=Laços de Família", SerieEntity[].class);
 		
 		SerieEntity[] series = res.getBody();
 		
 		for(SerieEntity serie : series) {
-			assertEquals("Avenida Brasil", serie.getTitle());
+			assertEquals("Laços de Família", serie.getTitle());
 		}
 		
 	}
@@ -75,9 +75,9 @@ public class SerieTest {
 	
 	@Test void testDeleteSerie() {
 		
-		testRestTemplate.delete("http://localhost:" + port + "/serie/3");
+		testRestTemplate.delete("http://localhost:" + port + "/serie/2");
 		
-		Optional<SerieEntity> serie = serieRepository.findById(3L);
+		Optional<SerieEntity> serie = serieRepository.findById(2L);
 		
 		assertTrue(serie.isEmpty());
 	}
