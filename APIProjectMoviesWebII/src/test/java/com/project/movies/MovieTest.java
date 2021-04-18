@@ -58,12 +58,12 @@ public class MovieTest {
 	@Test
 	public void testGetMovieByDirector() {
 		
-		ResponseEntity<MovieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/search?director=Tarantino", MovieEntity[].class);
+		ResponseEntity<MovieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/movie/search?director=Me", MovieEntity[].class);
 		
 		MovieEntity[] movies = res.getBody();
 		
 		for(MovieEntity movie : movies) {
-			assertEquals("Quentin Tarantino", movie.getDirector());
+			assertEquals("Me", movie.getDirector());
 		}
 		
 	}
