@@ -17,6 +17,8 @@ public class SerieMapper {
 	
 	public Serie toModel(SerieEntity serieEntity) {
 		
+		logger.trace("Executing toModel.");
+		
 		logger.info("Convertendo série em modelo para JSON.");	
 		
 		Serie serie = new Serie();
@@ -33,6 +35,8 @@ public class SerieMapper {
 	}
 	
 	public SerieEntity toEntity(Serie serie) {
+		
+		logger.trace("Executing toEntity.");
 		
 		logger.info("Convertendo série em entidade do banco de dados.");
 		
@@ -52,6 +56,8 @@ public class SerieMapper {
 	
 	public Serie optionalToModel (java.util.Optional<SerieEntity> serieEntity) {
 		
+		logger.trace("Executing optionalToModel.");
+		
 		logger.info("Convertendo modelo opcional em modelo JSON.");
 		
 		Serie serie = new Serie();
@@ -68,6 +74,8 @@ public class SerieMapper {
 	}
 	
 	public List<Serie> listToModel(List<SerieEntity> seriesEntity) {
+		
+		logger.trace("Executing listToModel.");
 		
 		List<Serie> series = new ArrayList<Serie>();
 		

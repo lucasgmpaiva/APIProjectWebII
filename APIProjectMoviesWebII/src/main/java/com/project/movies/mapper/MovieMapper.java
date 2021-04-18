@@ -17,6 +17,8 @@ public class MovieMapper {
 	
 	public Movie toModel(MovieEntity movieEntity) {
 		
+		logger.trace("Executing toModel.");
+		
 		logger.info("Convertendo filme em modelo para JSON.");		
 		Movie movie = new Movie();
 		
@@ -33,6 +35,8 @@ public class MovieMapper {
 	}
 	
 	public MovieEntity toEntity(Movie movie) {
+		
+		logger.trace("Executing toEntity.");
 		
 		logger.info("Convertendo filme em entidade do banco de dados.");
 		
@@ -53,6 +57,8 @@ public class MovieMapper {
 	
 	public Movie optionalToModel (java.util.Optional<MovieEntity> movieEntity) {
 		
+		logger.trace("Executing optionalToModel.");
+		
 		logger.info("Convertendo modelo opcional em modelo JSON.");
 		
 		Movie movie = new Movie();
@@ -70,6 +76,9 @@ public class MovieMapper {
 	}
 	
 	public List<Movie> listToModel(List<MovieEntity> moviesEntity) {
+		
+		logger.trace("Executing listToModel.");
+		
 		List<Movie> movies = new ArrayList<Movie>();
 		
 		logger.info("Percorrendo lista de filmes.");		

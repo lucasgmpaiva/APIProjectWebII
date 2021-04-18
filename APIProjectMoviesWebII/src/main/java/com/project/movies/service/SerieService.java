@@ -26,6 +26,8 @@ public class SerieService {
 	
 	public Serie createSerie(Serie serie) {
 		
+		logger.trace("Executing createSerie.");
+		
 		SerieEntity serieEntity = mapper.toEntity(serie);
 		logger.info("Salvando série no banco de dados.");
 		return mapper.toModel(serieRepository.save(serieEntity));
@@ -33,16 +35,25 @@ public class SerieService {
 	}
 	
 	public List<Serie> findAll() {
+		
+		logger.trace("Executing findAll.");
+		
 		logger.info("Realizando busca por todas as séries...");
 		return mapper.listToModel(serieRepository.findAll());
 	}
 	
 	public Serie findById(Long id) {
+		
+		logger.trace("Executing findById.");
+		
 		logger.info("Realizando busca de filme por id...");
 		return mapper.optionalToModel(serieRepository.findById(id));
 	}
 
 	public String deleteSerieById(Long id) {
+		
+		logger.trace("Executing deleteSerieById.");
+		
 		logger.info("Buscando o filme pelo id...");
 		SerieEntity serieEntity = mapper.toEntity(findById(id));
 		logger.info("Realizando remoção de série...");
@@ -51,12 +62,17 @@ public class SerieService {
 	}
 	
 	public Serie editSerie(Serie serie) {
+		
+		logger.trace("Executing editSerie.");
+		
 		SerieEntity serieEntity = mapper.toEntity(serie);
 		logger.info("Salvando filme com novas informações...");
 		return mapper.toModel(serieRepository.save(serieEntity));
 	}
 	
 	public List<Serie> searchSeries (String title, String broadcaster, String gender) {
+		
+		logger.trace("Executing searchSeries.");
 		
 		logger.info("Inicializando verificação de filtros...");
 		

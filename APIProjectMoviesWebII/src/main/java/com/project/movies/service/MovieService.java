@@ -27,6 +27,8 @@ public class MovieService {
 	
 	public Movie createMovie(Movie movie) {
 		
+		logger.trace("Executing createMovie.");
+		
 		MovieEntity movieEntity = mapper.toEntity(movie);
 		logger.info("Salvando filme no banco de dados.");
 		return mapper.toModel(movieRepository.save(movieEntity));
@@ -34,16 +36,25 @@ public class MovieService {
 	}
 
 	public List<Movie> findAll() {
+		
+		logger.trace("Executing findAll.");
+		
 		logger.info("Realizando busca por todos os filmes...");
 		return mapper.listToModel(movieRepository.findAll());
 	}
 	
 	public Movie findById(Long id) {
+		
+		logger.trace("Executing findById.");
+		
 		logger.info("Realizando busca por filme via id...");
 		return mapper.optionalToModel(movieRepository.findById(id));
 	}
 	
 	public String deleteMovieById(Long id) {
+		
+		logger.trace("Executing deleteMovieById.");
+		
 		logger.info("Buscando o filme pelo id...");
 		MovieEntity movieEntity = mapper.toEntity(findById(id));
 		logger.info("Deletando filme do banco de dados...");
@@ -52,12 +63,17 @@ public class MovieService {
 	}
 	
 	public Movie editMovie(Movie movie) {
+		
+		logger.trace("Executing editMovie.");
+		
 		MovieEntity movieEntity = mapper.toEntity(movie);
 		logger.info("Salvando filme com novas informações...");
 		return mapper.toModel(movieRepository.save(movieEntity));
 	}
 	
 	public List<Movie> searchMovies (String title, String director, String gender) {
+		
+		logger.trace("Executing searchMovies.");
 		
 		logger.info("Inicializando verificação de filtros...");
 		
