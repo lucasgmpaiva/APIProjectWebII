@@ -62,6 +62,14 @@ public class SerieTest {
 		
 	}
 	
+	@Test void testGetAll() {
+		ResponseEntity<SerieEntity[]> res = testRestTemplate.getForEntity("http://localhost:" + port + "/serie/all", SerieEntity[].class);
+		
+		SerieEntity[] series = res.getBody();
+		
+		assertEquals(3, series.length);
+	}
+	
 	
 	// Utilitários
 	
