@@ -106,7 +106,7 @@ public class MovieTest {
 		json.put("title", "Pulp Fiction");
 		json.put("writer", "Quentin Tarantino");
 		json.put("director", "Quentin Tarantino");
-		json.put("release_date", "22-09-1994");
+		json.put("release_date", "21-05-1994");
 		json.put("gender", "Action");
 		
 		return json;
