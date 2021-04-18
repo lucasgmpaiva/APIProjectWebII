@@ -13,6 +13,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    services:
+      
+      db:
+        image: mysql:8.0.23
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --name db --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v2
@@ -21,4 +31,7 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: mvn package --file APIProjectMoviesWebII/pom.xml
+      run: |
+        docker cp $(pwd)/APIProjectMoviesWebII/Scripts/createDB.sql db:/script.sql
+        docker exec db /bin/bash -c 'mysql -uroot -proot < script.sql'
+        mvn package --file APIProjectMoviesWebII/pom.xml
