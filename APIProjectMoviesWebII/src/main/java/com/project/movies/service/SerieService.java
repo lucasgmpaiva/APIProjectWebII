@@ -82,50 +82,57 @@ public class SerieService {
 			for (Serie serie : series) {
 				if(title != null && broadcaster == null && gender == null) {
 					logger.info("Identificado que a busca é por título");
-					if(serie.getTitle().toLowerCase().contains(title.toLowerCase()))
+					if(serie.getTitle().toLowerCase().contains(title.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(broadcaster != null && title == null && gender == null) {
 					logger.info("Identificado que a busca é por emissora");
-					if(serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase()))
+					if(serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(broadcaster != null && title != null && gender == null) {
 					logger.info("Identificado que a busca é por título e emissora");
 					if(serie.getTitle().toLowerCase().contains(title.toLowerCase())
-							&& serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase()))
+							&& serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(broadcaster == null && title != null && gender != null) {
 					logger.info("Identificado que a busca é por título e gênero");
 					if(serie.getTitle().toLowerCase().contains(title.toLowerCase())
-							&& serie.getGender().toLowerCase().contains(gender.toLowerCase()))
+							&& serie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(broadcaster != null && title == null && gender != null) {
 					logger.info("Identificado que a busca é por emissora e gênero");
 					if(serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase())
-							&& serie.getGender().toLowerCase().contains(gender.toLowerCase()))
+							&& serie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(gender != null && broadcaster == null && title == null) {
 					logger.info("Identificado que a busca é por gênero");
-					if(serie.getGender().toLowerCase().contains(gender.toLowerCase()))
+					if(serie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 				if(broadcaster != null && title != null && gender != null) {
 					logger.info("Identificado que a busca é por título, emissora e gênero");
 					if(serie.getTitle().toLowerCase().contains(title.toLowerCase())
 							&& serie.getGender().toLowerCase().contains(gender.toLowerCase())
-							&& serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase()))
+							&& serie.getBroadcaster().toLowerCase().contains(broadcaster.toLowerCase())) {
 						logger.info("+ 1 série encontrada");
 						foundSeries.add(serie);
+					}
 				}
 			}
 		}

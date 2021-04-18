@@ -83,50 +83,57 @@ public class MovieService {
 			for (Movie movie : movies) {
 				if(title != null && director == null && gender == null) {
 					logger.info("Identificado que a busca é por título");
-					if(movie.getTitle().toLowerCase().contains(title.toLowerCase()))
+					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(director != null && title == null && gender == null) {
 					logger.info("Identificado que a busca é por diretor");
-					if(movie.getDirector().toLowerCase().contains(director.toLowerCase()))
+					if(movie.getDirector().toLowerCase().contains(director.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(director != null && title != null && gender == null) {
 					logger.info("Identificado que a busca é por título e diretor");
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
-							&& movie.getDirector().toLowerCase().contains(director.toLowerCase()))
+							&& movie.getDirector().toLowerCase().contains(director.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(director == null && title != null && gender != null) {
 					logger.info("Identificado que a busca é por título e gênero");
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
-							&& movie.getGender().toLowerCase().contains(gender.toLowerCase()))
+							&& movie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(director != null && title == null && gender != null) {
 					logger.info("Identificado que a busca é por diretor e gênero");
 					if(movie.getDirector().toLowerCase().contains(director.toLowerCase())
-							&& movie.getGender().toLowerCase().contains(gender.toLowerCase()))
+							&& movie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(gender != null && director == null && title == null) {
 					logger.info("Identificado que a busca é por gênero");
-					if(movie.getGender().toLowerCase().contains(gender.toLowerCase()))
+					if(movie.getGender().toLowerCase().contains(gender.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 				if(director != null && title != null && gender != null) {
 					logger.info("Identificado que a busca é por título, diretor e gênero");
 					if(movie.getTitle().toLowerCase().contains(title.toLowerCase())
 							&& movie.getGender().toLowerCase().contains(gender.toLowerCase())
-							&& movie.getDirector().toLowerCase().contains(director.toLowerCase()))
+							&& movie.getDirector().toLowerCase().contains(director.toLowerCase())) {
 						logger.info("+ 1 filme encontrado");
 						foundMovies.add(movie);
+					}
 				}
 			}
 		}
