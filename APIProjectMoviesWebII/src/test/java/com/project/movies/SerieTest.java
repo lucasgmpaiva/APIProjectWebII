@@ -42,6 +42,14 @@ public class SerieTest {
 		
 	}
 	
+	@Test void testGetSerieById() {
+		
+		SerieEntity serie = testRestTemplate.getForObject("http://localhost:" + port + "/serie/1", SerieEntity.class);
+		
+		assertEquals(1L, serie.getId());
+		
+	}
+	
 	
 	// Utilitários
 	
